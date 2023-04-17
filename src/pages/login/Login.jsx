@@ -4,6 +4,8 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../../firebase'
 import { useNavigate } from 'react-router-dom';
 import { authContext } from '../../context/authContext';
+import { FaUserAlt } from "react-icons/fa";
+
 
 const Login = () => {
   const [error, setError] = useState(false)
@@ -29,13 +31,16 @@ const handleLogin = (e) => {
   });
 }
   return (
-    <div className='login'>
-      <form onSubmit={handleLogin}>
-        <input type="email" placeholder='email' onChange={(e) => setEmail(e.target.value)}/>
-        <input type="password" placeholder='password'onChange={(e) => setPassword(e.target.value)}/>
-        <button type = "submit" >Login</button>
-        {error && <span>Wrong email or password!</span>}
-      </form>
+    <div className='login_container'>
+      <div className='inner_container'>
+        <div className='user'><FaUserAlt/></div>
+        <form onSubmit={handleLogin}>
+          <input type="email" placeholder='email' onChange={(e) => setEmail(e.target.value)}/>
+          <input type="password" placeholder='password'onChange={(e) => setPassword(e.target.value)}/>
+          <button type = "submit" >Login</button>
+          {error && <span>Wrong email or password!</span>}
+        </form>
+      </div>
     </div>
   )
 }
